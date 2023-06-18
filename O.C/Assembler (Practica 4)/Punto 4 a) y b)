@@ -1,0 +1,20 @@
+Variables declaradas			
+NUM0 DB 0CAh			
+NUM1 DB 0			
+NUM2 DW ?			
+NUM3 DW 0ABCDh			
+NUM4 DW ?			
+			
+Instrucciones MOV	| MDD usado	| Contenido final del op |	Que sucede ?
+
+MOV BL, NUM0	| Directo	0CAh	Se copia en registro BL el valor de variable NUM0
+MOV BH, 0FFh	| Inmediato	0FFh	Se copia en registro BH el valor 0FFh
+MOV CH, BL	| Directo por reg.	0CAh	Se copia en registro CH lo que tiene BL
+MOV AX, BX	| Directo por reg.	0FFCAh	Se copia en registro AX lo que tiene BX.
+MOV NUM1, AL	| Directo	0CAh	Se copia en var NUM1 lo que esta en AL
+MOV NUM2, 1234h	| Inmediato	1234h	Se copia en var NUM2 el valor 1234h
+MOV BX, OFFSET NUM3	| Directo	1004h	Se copia direccion de la variable NUM3 en BX (siempre queda direccion de la primer celda, que contendria el byte menos significativo de lo que contiene la variable NUM3 en este caso)
+MOV DL, [BX]	| Indirecto x reg.	0CDh	Se copia valor de lo que apunta BX a DL (si no entra, recordar que se copia siempre primero la parte baja, por eso aca queda Cdh del nro ABCDh)
+MOV AX, [BX]	| Indirecto x reg.	0ABCDh	Se copia valor de lo que apunta BX a AX
+MOV BX, 1006h	| Inmediato	1006h	Se copia valor 1006h a BX
+MOV WORD PTR [BX], 0CDEFh	|	0CDEFh	Se copia, a la direccion que apunta BX, el valor 0CDEFh
