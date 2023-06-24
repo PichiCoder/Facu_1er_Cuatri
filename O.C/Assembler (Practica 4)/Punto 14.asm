@@ -6,14 +6,15 @@
 
 ; IMPORTANTE: considero que la parte mas significativa de cada NUM1 y NUM2 es la primer posicion, es decir, 1234H
 
+;Probando valores para NUM1, este caso actual da Carry
 
 ORG 1000H
-NUM1 DW 1234H, 0FFF1H ; Total de 4 celdas de memoria
-NUM2 DW 1234H, 5678H
+NUM1 DW 0FFFFH, 01FF1H ; Total de 4 celdas de memoria
+NUM2 DW 01001H, 05678H
 
 BIEN DB ?
-MAL DB ?
-RESUL DW ?, ?
+MAL DB 11H
+RESUL DW 0000H, 0000H
 
 ORG 2000H
 
