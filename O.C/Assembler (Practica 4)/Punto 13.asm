@@ -7,13 +7,13 @@ total DB 0
 
 ORG 3000H
 revisarC: INC BX
-CMP BYTE PTR [BX], 63h ; comparo si le sigue una c
+CMP BYTE PTR [BX], 63h ; comparo si le sigue una 'c'
 JZ ocurrencia
 JMP re
 ocurrencia: INC total
 re: RET
 
-revisarA: CMP BYTE PTR [BX], 61h ; comparo a lo que apunta BX con el valor a en ascii, si me da 0 es una a.
+revisarA: CMP BYTE PTR [BX], 61h ; comparo a lo que apunta BX con el valor 'a' en ascii, si me da 0 es una 'a'.
 JZ verC
 JMP r
 verC: Call revisarC
@@ -27,8 +27,7 @@ inicio: CALL revisarA
 
 INC BX
 
-CMP BX, OFFSET total ; resto direccion actual de BX con total que la inmediata al terminar la frase
-                     ;si me da 0 termine la frase
+CMP BX, OFFSET total ; comparo dir actual de BX con la de total, que es la inmediata al terminar la frase. Si da 0 termine de recorrer la frase.
 JNZ inicio
 
 hlt
