@@ -28,7 +28,7 @@ MOV [BX], AX ; guardo resultado de la parte menos sign en RESUL
 
 ;sumo y guardo parte sign
 MOV CX, NUM1
-ADC CX, NUM2 ;En CX me queda la suma de las partes sign.
+ADC CX, NUM2 ;En CX me queda la suma de las partes sign. + carry de operacion anterior
 
 MOV BX, OFFSET RESUL
 MOV [BX], CX ; guardo resultado de la parte mas sign en RESUL
