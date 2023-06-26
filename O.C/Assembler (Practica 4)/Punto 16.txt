@@ -6,11 +6,14 @@
 pero la cantidad de instrucciones en el primer caso es 11 vs 12 del segundo.
 El tiempo de ejecucion de la tarea depende del valor de NUM2 porque define la cantidad de veces que se ejecuta el bucle.
 
-a) Al ejecutarse CALL SUB1, la direccion de la siguiente instruccion del ppal, almacenada porel IP (Instruction Pointer), 
-podria ser por ejemplo la 2009H, se guarda mediante un PUSH automatico en la pila.
-Luego el SP (Stack Pointer) apunta a la primer instruccion de la subrutina (guardada en el fondo pila, 2FFFH) y se va decrementando
-para recorrer todo el codigo de la subrutina. Cuando esta termina, lo ultimo a lo que queda apuntando el SP es a la direccion
-de la instruccion que debe seguirse en ppal para poder continuar (lo que se habia guardado con el PUSH al llamar a la subrutina).
+a) Al ejecutarse CALL SUB1, la direccion de la siguiente instruccion del ppal, almacenada por el IP (Instruction Pointer), 
+que podria ser por ejemplo la 2009H, es guardada  en la pila mediante un PUSH (automaticamente).
+Luego de guardar esa dir, lo cual es muy importante para no perder referencia de como seguiria el programa ppal, al IP se le asigna la direccion de la SUBRUTINA para poder ejecutarla !
+Sigue la ejecucion como siempre pero al finalizar la SUBr, por la sentencia RET el programa continua en la sig instr del ppal.
+Este RET, lo que hace es desapilar la dir de la instruccion que habiamos salvado en la pila mediante un POP IP. De esta forma
+puede continuarse normalmente con la ejecucion del ppal sin perder nada.
+
+**Lo de "tope de la pila" suena contradictorio porque graficamente parece que se trata del fondo de la pila.
 
 b) La instruccion RET provoca que la ejecucion del programa continue en la siguiente instruccion, luego del CALL, 
 del programa principal. La CPU lo sabe por lo explicado anteriormente!!
