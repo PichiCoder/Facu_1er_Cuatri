@@ -1,0 +1,17 @@
+1) Ambos programas suman del 0 al 15 hexadecimal, de 5h en 5h. 0 + 5h + 5h + 5h = Fh
+
+2) El resultado queda almacenado en el registro DX
+
+3) En ambos casos, el loop tiene la misma extension, la cantidad de accesos a memoria es la misma (2 veces) 
+pero la cantidad de instrucciones en el primer caso es 11 vs 12 del segundo.
+El tiempo de ejecucion de la tarea depende del valor de NUM2 porque define la cantidad de veces que se ejecuta el bucle.
+
+a) Al ejecutarse CALL SUB1, la direccion de la siguiente instruccion del ppal, almacenada porel IP (Instruction Pointer), 
+podria ser por ejemplo la 2009H, se guarda mediante un PUSH automatico en la pila.
+Luego el SP (Stack Pointer) apunta a la primer instruccion de la subrutina (guardada en el fondo pila, 2FFFH) y se va decrementando
+para recorrer todo el codigo de la subrutina. Cuando esta termina, lo ultimo a lo que queda apuntando el SP es a la direccion
+de la instruccion que debe seguirse en ppal para poder continuar (lo que se habia guardado con el PUSH al llamar a la subrutina).
+
+b) La instruccion RET provoca que la ejecucion del programa continue en la siguiente instruccion, luego del CALL, 
+del programa principal. La CPU lo sabe por lo explicado anteriormente!!
+
