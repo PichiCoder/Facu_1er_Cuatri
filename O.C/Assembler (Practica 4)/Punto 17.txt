@@ -1,1 +1,8 @@
+NUM1 y NUM2 ahora son palabras de 16bits
 
+Diferencias principales, proposito de las acciones PUSH DX, POP DX y usos del registro DX: 
+- No se comprueban valores iniciales porque se asume mayores que 0
+- Se decrementa la variable NUM2 directamente en vez de una copia de ella guardada en un registro.
+- Se hace uso de la pila para guardar momentaneamente el valor de la suma actual (al hacer PUSH DX luego del ADD donde queda la suma guardada en DX). 
+- Luego del PUSH, ese mismo registro copia el valor de NUM2, decrece y luego es usado para actualizar NUM2.
+- Finalmente se hace el POP DX para que este registro vuelva a contener la suma actual que fue guardada en la pila.
