@@ -9,7 +9,7 @@
 
 ORG 1000H
 X DW 3 ; el nro X
-tabla DW 1000H ; la tabla para guardar resulados
+tabla DW 1002H ; la tabla para guardar resulados
 
 ORG 3000H
 
